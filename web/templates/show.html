@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<style>
+  body {
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+  }
+  iframe {
+    margin: 0;
+    padding: 0;
+    height: 100vh;
+    width: 100vw;
+    border: 0;
+  }
+</style>
+<body>
+{{ if .Name }}
+  <iframe id="content" src="/blank"></iframe>
+  <script src="/js/show.js"></script>
+  <script>
+    show("{{ .Name }}");
+  </script>
+{{ else }}
+  <form>
+    Set a name for this display:
+    <input name="name">
+    <input type="submit" value="Display">
+  </form>
+{{ end }}
+</body>

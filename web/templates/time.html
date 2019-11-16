@@ -1,0 +1,32 @@
+<style>
+  body {
+    overflow: hidden;
+    margin: 0;
+    padding: 0;
+    background: black;
+    color: white;
+    font-size: 80vh;
+    text-align: center;
+  }
+</style>
+<body>
+  <span id="clock">12:00</span>
+  <script>
+    function updateClock() {
+      let clock = document.querySelector("#clock");
+      let d = new Date();
+      let h = d.getHours();
+      let m = d.getMinutes();
+      clock.innerText = (h < 10 ? "0" + h : h) + ":" + (m < 10 ? "0" + m : m);
+      setTimeout(updateClock,
+        ((59 - d.getSeconds()) * 1000) + (1000 - (d.getTime() % 1000)));
+    }
+
+    function setSize() {
+      document.body.style.fontSize = (document.body.clientWidth / 2.3) + "px";
+    }
+
+    setSize();
+    updateClock();
+  </script>
+</body>

@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<title>go-web-dashboard</title>
+<style>
+</style>
+<body>
+  <p><a href="/show">New display</a></p>
+
+<table>
+{{ range $name := .Clients }}
+<tr>
+  <td>{{ $name }}</td>
+  <!-- so hacky, but works for now... -->
+  <td><a href="/send?name={{ $name }}&url=" onclick="this.href+=escape(prompt('URL?'))">Send URL...</a></td>
+</tr>
+{{ end }}
+</table>
+
+</body>
