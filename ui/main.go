@@ -20,7 +20,7 @@ func New(clients *clients.Clients) *UI {
 
 	http.HandleFunc("/", ui.root)
 	http.HandleFunc("/show", ui.show)
-	http.HandleFunc("/blank", ui.blank)
+	http.HandleFunc("/blank", serveFile("blank.html"))
 	http.HandleFunc("/time", serveFile("time.html"))
 	http.Handle("/js/", http.StripPrefix("/js/", http.FileServer(web.JS)))
 	http.HandleFunc("/send", ui.send)
@@ -47,8 +47,6 @@ func (ui *UI) root(w http.ResponseWriter, r *http.Request) {
 		http.Error(w, err.Error(), http.StatusInternalServerError)
 	}
 }
-
-func (ui *UI) blank(w http.ResponseWriter, r *http.Request) {}
 
 func (ui *UI) show(w http.ResponseWriter, r *http.Request) {
 	name := r.FormValue("name")

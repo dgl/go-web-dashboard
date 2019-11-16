@@ -1,6 +1,6 @@
 # go-web-dashboard
 
-A simple dashboard showing system.
+A simple dashboard control system.
 
 ## What?
 
